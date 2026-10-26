@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "corvox"
+version = "0.1.0"
+description = "On-demand, natural-sounding text-to-speech for AI coding agents (Claude Code, Codex CLI)."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+dependencies = ["edge-tts>=7.0"]
+keywords = ["tts", "text-to-speech", "claude-code", "codex", "accessibility", "edge-tts"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+]
+
+[project.urls]
+Homepage = "https://github.com/Honokii/corvox"
+Issues = "https://github.com/Honokii/corvox/issues"
+
+[project.scripts]
+corvox = "corvox.cli:main"
+
+[tool.hatch.build.targets.sdist]
+include = ["corvox", "tests", "README.md", "LICENSE"]
