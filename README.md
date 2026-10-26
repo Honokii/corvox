@@ -99,11 +99,12 @@ Corvox is silent until you ask. The same commands work in both agents.
 Typed `corvox …` commands are handled by a hook before the model sees them, so they
 don't use a model turn or tokens.
 
-> **"A hook blocked your prompt" is expected.** To keep a Corvox command away from the
-> model, the hook blocks the prompt once it has handled it. Claude Code shows every
-> blocked prompt as a warning card, with Corvox's message in it (for example
-> "Corvox: reading the last claude reply."). The command still worked. The card only
-> means the prompt wasn't sent to the model.
+> **"Hook blocked" notices are expected.** To keep a Corvox command away from the
+> model, the hook blocks the prompt once it has handled it. Claude Code shows this as
+> an "A hook blocked your prompt" warning card. Codex marks the message "Hook blocked
+> this message". Both show Corvox's own message, for example "Corvox: auto-read ON,
+> every reply will be read aloud." The command still worked. The notice only means
+> the prompt wasn't sent to the model.
 
 A new reading replaces the one playing. If both agents want to speak at once, they
 share one queue, so they never talk over each other.
@@ -157,8 +158,9 @@ if it stops working.
 
 - **Nothing happens in Codex:** run `/hooks` and check both Corvox hooks are allowed.
 - **Nothing happens in Claude Code:** start a new session.
-- **"A hook blocked your prompt" after a Corvox command:** this is expected, not an
-  error. Corvox handled the command and kept it from reaching the model.
+- **"A hook blocked your prompt" (Claude Code) or "Hook blocked this message" (Codex)
+  after a Corvox command:** this is expected, not an error. Corvox handled the
+  command and kept it from reaching the model.
 - **No sound:** run `corvox say "test"` in a terminal. Errors go to `corvox.log` in
   `CORVOX_HOME` (`corvox config path` shows where that is).
 - **Esc stops Corvox when I didn't mean it to:** Esc works from any window while
